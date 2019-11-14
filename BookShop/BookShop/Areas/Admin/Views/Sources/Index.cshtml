@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BookShop.Models.Sources>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Sources List</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp; New Sources</a>
+    </div>
+</div>
+
+
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(m => m.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Zip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Phone)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.City)
+        </td>
+        <th>
+            @Html.DisplayFor(m => item.Zip)
+        </th>
+        <th>
+            @Html.DisplayFor(m => item.Phone)
+        </th>
+        <td>
+            <partial name="_TableButtonPartial" model="item.ID" />
+        </td>
+    </tr>
+        }
+    </table>
+</div>
+
+
