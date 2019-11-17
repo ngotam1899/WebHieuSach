@@ -4,10 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookShop.Data;
 using BookShop.Models;
+using BookShop.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = SD.SuperAdminEndUser)]
     [Area("Admin")]
     public class PublishersController : Controller
     {

@@ -9,7 +9,9 @@ namespace BookShop.Utility
     {
         public const string DefaultBookImage = "default_image.png";
         public const string ImageFolder = @"images\BookImage";
+        public const string AdminEndUser = "Admin";
+        public const string SuperAdminEndUser = "Super Admin";
 
-        
+
     }
 }

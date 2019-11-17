@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\BookShop\\BookShop\\BookShop.csproj": {}
+    "C:\\Users\\ngota\\OneDrive\\Desktop\\Complete ASP.NET Core 2.1 Course\\BookShop\\BookShop\\BookShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\BookShop\\BookShop\\BookShop.csproj": {
+    "C:\\Users\\ngota\\OneDrive\\Desktop\\Complete ASP.NET Core 2.1 Course\\BookShop\\BookShop\\BookShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\BookShop\\BookShop\\BookShop.csproj",
+        "projectUniqueName": "C:\\Users\\ngota\\OneDrive\\Desktop\\Complete ASP.NET Core 2.1 Course\\BookShop\\BookShop\\BookShop.csproj",
         "projectName": "BookShop",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\BookShop\\BookShop\\BookShop.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\BookShop\\BookShop\\obj\\",
+        "projectPath": "C:\\Users\\ngota\\OneDrive\\Desktop\\Complete ASP.NET Core 2.1 Course\\BookShop\\BookShop\\BookShop.csproj",
+        "packagesPath": "C:\\Users\\ngota\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ngota\\OneDrive\\Desktop\\Complete ASP.NET Core 2.1 Course\\BookShop\\BookShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ngota\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

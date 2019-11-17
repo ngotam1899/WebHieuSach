@@ -21,5 +21,6 @@ namespace BookShop.Data
         public DbSet<OrderLines> OrderLine { get; set; }
         public DbSet<Sources> Sources { get; set; }
         public DbSet<BookTypes> BookTypes { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
