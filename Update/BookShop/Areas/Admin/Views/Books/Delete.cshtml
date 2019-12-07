@@ -1,0 +1,85 @@
+﻿@model BookShop.Models.ViewModel.BooksViewModel
+@using BookShop.Extensions
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h2 class=" text-info">Delete Book</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Books.ID" />
+        
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Name" readonly class="form-control" />
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Price" readonly class="form-control" />
+                </div>
+                
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="BookTypes"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.BookTypes.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Authors"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Authors.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Publishers"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Publishers.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Available"></label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" readonly class="form-control" asp-for="Books.Available" />
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.Books.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </div>
+        <br />
+        <div class=" form-group">
+            <input type="submit" class="btn btn-danger" value="Delete" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

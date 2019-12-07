@@ -1,0 +1,131 @@
+﻿@model BookShop.Models.ViewModel.ShipmentDetailsViewModel
+@using BookShop.Extensions
+@using BookShop.Utility
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<br />
+<h2 class=" text-info">Delete Shipment</h2>
+
+<form method="post">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Shipment.ID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-6">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.CustomerName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.CustomerName" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.CustomerEmail"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.CustomerEmail" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.CustomerPhone"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.CustomerPhone" readonly class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.ShipmentDate"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.ShipmentDate" readonly id="datepicker" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.ShipmentTime"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.ShipmentTime" readonly id="timepicker" type="text" class="timepicker form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.SalesPerson"></label>
+                </div>
+                <div class="col-8">
+                    @if (User.IsInRole(SD.AdminEndUser))
+                    {
+                        <input asp-for="@Model.Shipment.SalesPerson.Name" readonly class="form-control" />
+                        <input asp-for="@Model.Shipment.SalesPersonID" hidden />
+
+                    }
+                    else
+                    {
+                        <select asp-for="@Model.Shipment.SalesPersonID" disabled asp-items="Model.SalesPerson.ToSelectListItemString(Model.Shipment.SalesPersonID)" class="form-control"></select>
+
+                    }
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Shipment.isConfirmed"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Shipment.isConfirmed" disabled class="form-control" />
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            @* Partial View *@
+            <partial name="~/Views/Shared/_ShipmentBookDetails.cshtml" model="Model.Books" />
+        </div>
+
+        <br />
+        <div class=" form-group">
+            <input type="submit" class="btn btn-danger" asp-route-id="@Model.Shipment.ID" value="Delete" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            var appointmentTime = document.getElementById('datepicker').value;
+            var splitData = "";
+            if (appointmentTime.indexOf(" ") > 0) {
+                splitData = appointmentTime.split(" ");
+
+            }
+            else {
+                splitData = appointmentTime.split("T");
+
+            }
+
+            var time = splitData[1].substring(0, 5);
+            if (time.slice(-1) == ":") {
+                time = time.substring(0, time.length - 1);
+
+            }
+            var amPmTime = splitData[2];
+            $('#datepicker').attr('value', splitData[0]);
+            $('#timepicker').attr('value', time + ' ' + amPmTime);
+
+        });
+
+    </script>
+}

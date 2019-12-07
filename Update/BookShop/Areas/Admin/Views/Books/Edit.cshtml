@@ -1,0 +1,92 @@
+﻿@model BookShop.Models.ViewModel.BooksViewModel
+@using BookShop.Extensions
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+<h2 class=" text-info">Edit Book</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Books.ID"/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>     
+        <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Books.Name"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Books.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Books.Name" class="text-danger"></span>
+        </div>      
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Books.Price"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Books.Price" class="form-control" />
+            </div>
+            <span asp-validation-for="Books.Price" class="text-danger"></span>
+        </div>        
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Books.Image"></label>
+            </div>
+            <div class="col-8">
+                <input type="file" name="files" class="form-control" />
+            </div>
+        </div>        
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="BookTypes"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="@Model.Books.BookTypeID" asp-items="Model.BookTypes.ToSelectListItem(Model.Books.BookTypeID)" class="form-control"></select>
+            </div>
+        </div>       
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Authors"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="@Model.Books.AuthorID" asp-items="Model.Authors.ToSelectListItem(Model.Books.AuthorID)" class="form-control"></select>
+            </div>
+        </div>      
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Publishers"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="@Model.Books.PublisherID" asp-items="Model.Publishers.ToSelectListItem(Model.Books.PublisherID)" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Books.Available"></label>
+            </div>
+            <div class="col-8">
+                <input type="checkbox" asp-for="Books.Available" />
+            </div>
+        </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.Books.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </div>
+        <br />   
+        <div class=" form-group">
+            <input type="submit" class="btn btn-primary" value="Update" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,82 @@
+﻿@model BookShop.Models.ViewModel.BooksViewModel
+@using BookShop.Extensions
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+<h2 class=" text-info">Book Details</h2>
+
+
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Books.ID" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Name" readonly class="form-control" />
+                </div>
+               
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Price" readonly class="form-control" />
+                </div>
+                
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="BookTypes"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.BookTypes.Name" readonly class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Authors"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Authors.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Publishers"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Books.Publishers.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Books.Available"></label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" readonly class="form-control" asp-for="Books.Available" />
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.Books.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </div>
+        <br />
+        <div class=" form-group">
+            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Books.ID">Edit</a>
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+
+
+
