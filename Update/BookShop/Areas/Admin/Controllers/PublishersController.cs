@@ -7,6 +7,7 @@ using BookShop.Models;
 using BookShop.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookShop.Areas.Admin.Controllers
 {
@@ -19,9 +20,17 @@ namespace BookShop.Areas.Admin.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(_db.Publishers.ToList());
+            var publishers = from m in _db.Publishers
+                          select m;
+            if (!string.IsNullOrEmpty(search))
+            {
+                publishers = _db.Publishers.Where(s => s.Name.Contains(search));
+            }
+            //books = _db.Books.Include(m => m.BookTypes).Include(m => m.Authors).Include(m => m.Publishers);
+            return View(await publishers.ToListAsync());
+            //return View(_db.Authors.ToList());
         }
         //Get Create Method
         public IActionResult Create()

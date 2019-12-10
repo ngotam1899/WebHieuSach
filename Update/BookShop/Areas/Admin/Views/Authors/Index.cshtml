@@ -14,13 +14,21 @@
         <a asp-action="Create" class="btn btn-info">&nbsp; New Author</a>
     </div>
 </div>
-
-
+<br />
+<form asp-action="Index" method="post">
+    <div class="row input-group">
+        <input type="text" name="search" id="search" class="form-control" />
+        <div class="input-group-btn">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<br />
 <div>
     <table class="table table-striped border">
         <tr class="table-info">
-            <th>               
-                @Html.DisplayNameFor(m => m.Name)               
+            <th>
+                @Html.DisplayNameFor(m => m.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(m => m.City)
@@ -32,8 +40,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>                   
-                    @Html.DisplayFor(m => item.Name)                   
+                <td>
+                    @Html.DisplayFor(m => item.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(m => item.City)

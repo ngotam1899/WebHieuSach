@@ -14,8 +14,16 @@
         <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Admin User</a>
     </div>
 </div>
-
-
+<br />
+<form asp-action="Index" method="post">
+    <div class="row input-group">
+        <input type="text" name="search" id="search" class="form-control" />
+        <div class="input-group-btn">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<br />
 <div>
     <table class="table table-striped border">
         <tr class="table-info">
@@ -36,36 +44,36 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(m => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.PhoneNumber)
-            </td>
-            <td>
-                @if(item.LockoutEnd != null && item.LockoutEnd > DateTime.Now)
-                {
-                    <label>Disabled</label>
-                }
-            </td>
-            <td>
-                @*Kiểm tra dc thì cho xóa sửa(LockoutEnd:tgian ban)*@
-                @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
-                {
-                    <a type="button" class="btn btn-primary" href="@Url.Action("Edit/"+item.Id).Replace("%2F","/")">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <a type="button" class="btn btn-danger" href="@Url.Action("Delete/"+item.Id).Replace("%2F","/")">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                }
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.PhoneNumber)
+                </td>
+                <td>
+                    @if (item.LockoutEnd != null && item.LockoutEnd > DateTime.Now)
+                    {
+                        <label>Disabled</label>
+                    }
+                </td>
+                <td>
+                    @*Kiểm tra dc thì cho xóa sửa(LockoutEnd:tgian ban)*@
+                    @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                    {
+                        <a type="button" class="btn btn-primary" href="@Url.Action("Edit/"+item.Id).Replace("%2F","/")">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a type="button" class="btn btn-danger" href="@Url.Action("Delete/"+item.Id).Replace("%2F","/")">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    }
+                </td>
 
-        </tr>
+            </tr>
         }
     </table>
 </div>

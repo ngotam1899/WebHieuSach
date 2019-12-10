@@ -41,9 +41,15 @@ namespace BookShop.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            var books = _db.Books.Include(m => m.BookTypes).Include(m => m.Authors).Include(m => m.Publishers);
+            var books = from m in _db.Books
+                         select m;
+            if (!string.IsNullOrEmpty(search))
+            {
+                books = _db.Books.Where(s => s.Name.Contains(search));
+            }
+            //books = _db.Books.Include(m => m.BookTypes).Include(m => m.Authors).Include(m => m.Publishers);
             return View(await books.ToListAsync());
         }
 

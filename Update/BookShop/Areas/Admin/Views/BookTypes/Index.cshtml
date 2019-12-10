@@ -14,7 +14,16 @@
         <a asp-action="Create" class="btn btn-info">&nbsp; New Book Types</a>
     </div>
 </div>
-
+<br />
+<form asp-action="Index" method="post">
+    <div class="row input-group">
+        <input type="text" name="search" id="search" class="form-control" />
+        <div class="input-group-btn">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<br />
 
 <div>
     <table class="table table-striped border">
@@ -22,7 +31,7 @@
             <th>
                 @Html.DisplayNameFor(m => m.Name)
             </th>
-            
+
             <th></th>
             <th></th>
         </tr>
@@ -33,7 +42,7 @@
                 <td>
                     @Html.DisplayFor(m => item.Name)
                 </td>
-                
+
                 <td>
                     <partial name="_TableButtonPartial" model="item.ID" />
                 </td>

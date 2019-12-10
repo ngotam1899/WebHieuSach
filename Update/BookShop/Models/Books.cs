@@ -34,6 +34,5 @@ namespace BookShop.Models
         public int BookTypeID { get; set; }
         [ForeignKey("BookTypeID")]
         public virtual BookTypes BookTypes { get; set; }
-
     }
 }
