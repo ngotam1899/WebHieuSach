@@ -23,10 +23,17 @@ namespace BookShop.Controllers
             _db = db;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            var bookList = await _db.Books.Include(m => m.BookTypes).Include(m => m.Publishers).Include(m => m.Authors).ToListAsync();
-            return View(bookList);
+            var bookList = from m in _db.Books
+                          select m;
+            if (!string.IsNullOrEmpty(search))
+            {
+                bookList = _db.Books.Where(s => s.Name.Contains(search));
+            }
+            //books = _db.Books.Include(m => m.BookTypes).Include(m => m.Authors).Include(m => m.Publishers);
+            return View(await bookList.ToListAsync());
+
         }
 
         public async Task<IActionResult> Details(int id)
